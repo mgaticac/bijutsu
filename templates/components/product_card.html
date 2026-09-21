@@ -1,0 +1,8 @@
+{% load money %}
+<article class="product-card">
+  <a class="product-image" href="{{ product.get_absolute_url }}">{% if product.cover %}<img src="{{ product.cover.url }}" alt="{{ product.name }}" loading="lazy" width="600" height="600">{% else %}<div class="image-placeholder" aria-label="Fotografía pendiente"><span class="wire-object {% if product.kind == 'kit' %}wire-tall{% endif %}" aria-hidden="true"></span><span>FOTOGRAFÍA PENDIENTE</span></div>{% endif %}<div class="card-badges">{% if product.is_demo %}<span class="badge-label">DEMO</span>{% endif %}{% if product.featured %}<span class="badge-label accent">DESTACADO</span>{% elif product.is_new %}<span class="badge-label accent">NUEVO</span>{% endif %}</div><span class="image-arrow" aria-hidden="true">↗</span></a>
+  <div class="product-meta">{{ product.category }} <span>{{ product.get_technology_display }}</span></div>
+  <h3><a href="{{ product.get_absolute_url }}">{{ product.name }}</a></h3>
+  <div class="card-price"><span>Desde <strong>{{ product.base_price|clp }}</strong></span><a href="{% url 'quotes:create' product.slug %}">Cotizar ↗</a></div>
+  <a class="card-detail" href="{{ product.get_absolute_url }}">Ver producto</a>
+</article>

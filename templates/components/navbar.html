@@ -1,0 +1,21 @@
+<header class="site-header">
+<nav class="navbar navbar-expand-xl container" aria-label="Navegación principal">
+  <a class="navbar-brand" href="{% url 'home' %}" aria-label="Bijutsu Printing, inicio">{% include 'components/brand.html' %}</a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navigation" aria-controls="navigation" aria-label="Abrir menú"><span class="navbar-toggler-icon"></span></button>
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="navigation" aria-labelledby="nav-title">
+    <div class="offcanvas-header"><strong id="nav-title">BIJUTSU PRINTING</strong><button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar menú"></button></div>
+    <div class="offcanvas-body align-items-center gap-3">
+      <div class="navbar-nav mx-auto">
+        <a class="nav-link" href="{% url 'home' %}">Inicio</a>
+        <a class="nav-link" href="{% url 'catalog:list' %}">Catálogo</a>
+        <a class="nav-link" href="{% url 'catalog:fdm' %}">Filamento</a>
+        <a class="nav-link" href="{% url 'catalog:resin' %}">Resina</a>
+        <a class="nav-link" href="{% url 'portfolio' %}">Blog / Trabajos</a>
+        <a class="nav-link" href="{% url 'quotes:list' %}">Mis cotizaciones</a>
+      </div>
+      <a class="btn btn-dark btn-sm" href="{% url 'quotes:custom' %}">Solicitar impresión <span aria-hidden="true">↗</span></a>
+      {% if user.is_authenticated %}<div class="dropdown"><button class="account-button dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">{{ user.username }}</button><ul class="dropdown-menu dropdown-menu-end"><li><a class="dropdown-item" href="{% url 'profile' %}">Mi perfil</a></li>{% if user.is_staff %}<li><a class="dropdown-item" href="{% url 'dashboard' %}">Gestión</a></li>{% endif %}<li><form method="post" action="{% url 'logout' %}">{% csrf_token %}<button class="dropdown-item" type="submit">Cerrar sesión</button></form></li></ul></div>{% else %}<a class="account-button" href="{% url 'login' %}">Ingresar</a>{% endif %}
+    </div>
+  </div>
+</nav>
+</header>

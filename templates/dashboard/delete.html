@@ -1,0 +1,2 @@
+{% extends 'dashboard/base.html' %}
+{% block management_content %}<div class="management-panel"><p class="eyebrow">ELIMINAR {{ config.singular }}</p><h1>¿Eliminar este registro?</h1><p class="mt-4"><strong>{{ object }}</strong></p><p>Esta acción elimina el registro y sus elementos dependientes. Si solo quieres ocultarlo, vuelve y desactívalo.</p><form method="post">{% csrf_token %}<button class="btn btn-primary" type="submit">Sí, eliminar</button><a class="btn btn-outline-dark" href="{% url 'management:edit' section object.pk %}">Cancelar</a></form></div>{% endblock %}

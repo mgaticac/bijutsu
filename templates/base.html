@@ -1,0 +1,33 @@
+{% load static %}
+<!doctype html>
+<html lang="es-CL">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}BIJUTSU PRINTING{% endblock %}</title>
+  <meta name="description" content="{% block description %}Catálogo de impresión 3D por encargo en filamento y resina. Productos, Model Kits y solicitudes de impresión de archivos propios.{% endblock %}">
+  {% block social %}{% endblock %}
+  <link rel="stylesheet" href="{% static 'vendor/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/variables.css' %}">
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  <link rel="stylesheet" href="{% static 'css/components.css' %}">
+  <link rel="stylesheet" href="{% static 'css/catalog.css' %}">
+  <link rel="stylesheet" href="{% static 'css/product.css' %}">
+  <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+  <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+  <link rel="stylesheet" href="{% static 'css/identity.css' %}">
+  <link rel="stylesheet" href="{% static 'css/management.css' %}">
+</head>
+<body>
+<a class="skip-link" href="#main">Saltar al contenido</a>
+{% include 'components/navbar.html' %}
+<main id="main">
+  {% if messages %}<div class="container py-3" aria-live="polite">{% for message in messages %}<div class="notice {{ message.tags }}">{{ message }}</div>{% endfor %}</div>{% endif %}
+  {% block content %}{% endblock %}
+</main>
+{% include 'components/footer.html' %}
+{% include 'components/lightbox.html' %}
+<script src="{% static 'vendor/bootstrap.bundle.min.js' %}" defer></script>
+<script src="{% static 'js/gallery.js' %}" defer></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

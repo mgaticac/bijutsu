@@ -1,0 +1,3 @@
+# This directory is Python source, not an Apache document root.
+# Django is served by its development server or a configured WSGI server.
+Require all denied

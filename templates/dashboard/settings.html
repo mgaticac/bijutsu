@@ -1,0 +1,2 @@
+{% extends 'dashboard/base.html' %}
+{% block management_content %}<p class="eyebrow">IDENTIDAD Y CONTACTO</p><h1>Tu marca<span class="title-dot">.</span></h1><p class="mt-4">Actualiza el logo y los datos que quieres mostrar en el sitio. Los campos de contacto vacíos no se publican.</p><form method="post" enctype="multipart/form-data" class="management-panel">{% csrf_token %}{% include 'components/form.html' %}<button class="btn btn-primary">Guardar configuración ↗</button></form>{% endblock %}

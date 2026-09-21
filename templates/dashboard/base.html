@@ -1,0 +1,6 @@
+{% extends 'base.html' %}{% load static %}
+{% block title %}Gestión del taller · Bijutsu Printing{% endblock %}
+{% block content %}<div class="container management-shell">
+<aside class="management-sidebar"><a class="management-heading" href="{% url 'dashboard' %}"><span class="red-dot"></span> MI TALLER</a><nav aria-label="Gestión del taller"><a href="{% url 'dashboard' %}" {% if active_section == 'overview' %}class="active"{% endif %}>Resumen <span>↗</span></a>{% for entry in management_nav %}<a href="{% url 'management:list' entry.key %}" {% if active_section == entry.key %}class="active"{% endif %}>{{ entry.title }} <span>↗</span></a>{% endfor %}{% if perms.core.change_siteconfiguration and perms.core.view_siteconfiguration %}<a href="{% url 'management:settings' %}" {% if active_section == 'settings' %}class="active"{% endif %}>Marca y contacto <span>↗</span></a>{% endif %}</nav><p>BIJUTSU PRINTING<br><small>Administración del sitio</small></p></aside>
+<div class="management-main">{% block management_content %}{% endblock %}</div></div>{% endblock %}
+{% block scripts %}<script src="{% static 'js/management.js' %}" defer></script>{% endblock %}
